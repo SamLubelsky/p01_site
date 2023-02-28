@@ -181,7 +181,3 @@ def get_stocks(username):
     # print(stocks)
     return stocks
 
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
-
