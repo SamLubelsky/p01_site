@@ -21,6 +21,8 @@ if db_builder.new_day(cur_date):
 
 @app.route('/')
 def index():
+    if db_builder.new_day(cur_date):
+        db_builder.update_date(cur_date)
     if 'username' in session:
         if db_builder.verify(session['username'], session['password']):
             return redirect("/home")
@@ -180,4 +182,8 @@ def get_stocks(username):
     # print(f"\nstocks w/ price: ['{stocks[0]}', '{stocks[1]}', '{stocks[2]}', '{stocks[3]}', '{stocks[4]}', '{stocks[5]}',..., '{stocks[-1]}'")
     # print(stocks)
     return stocks
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run()
 
